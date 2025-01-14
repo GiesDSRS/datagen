@@ -1,0 +1,4 @@
+[server]
+baseUrlPath = "apps/emulator"
+[theme]
+backgroundColor="white"

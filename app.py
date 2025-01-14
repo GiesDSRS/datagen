@@ -16,12 +16,16 @@ from datetime import datetime
 from openai import OpenAI
 import base64
 import requests
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv() # read .env file variables
 
 # Define API details
 model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key = st.secrets.get("OPENAI_API") or os.getenv("OPENAI_API")
-openai_api_base = st.secrets.get("OPENAI_API_BASE") or os.getenv("OPENAI_API_BASE", "https://llm.dsrs.illinois.edu/v1")
+openai_api_key =  os.getenv("OPENAI_API")
+openai_api_base =  os.getenv("OPENAI_API_BASE")
 
 # Check if API key is set
 if not openai_api_key:
@@ -40,8 +44,9 @@ GEOJSON_URLS = {
     "CONTINENTS": "https://raw.githubusercontent.com/PhantomInsights/world-geojson/main/continents.json"
 }
 
-@st.cache
+st.logo("DSRS_Logo.png", size="large")
 
+@st.cache_data()
 def fetch_geojson(url):
     try:
         response = requests.get(url)
