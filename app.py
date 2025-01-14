@@ -24,8 +24,8 @@ load_dotenv() # read .env file variables
 
 # Define API details
 model = "meta-llama/Llama-3.3-70B-Instruct"
-openai_api_key =  os.getenv("OPENAI_API")
-openai_api_base =  os.getenv("OPENAI_API_BASE")
+openai_api_key =  os.getenv("OPENAI_API_KEY")
+openai_api_base =  os.getenv("OPENAI_API_ENDPOINT")
 
 # Check if API key is set
 if not openai_api_key:
